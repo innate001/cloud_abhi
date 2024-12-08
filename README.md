@@ -24,11 +24,11 @@ Performance metrics used are Sharpe ratio and Maximum Drawdown.
 Building on the above strategy, certain improvements are introduced:
 1. **Exponential moving average (EMA)** is used instead of the simple moving average (SMA) to give more weight to recent prices and less weight to older prices
 2. Buy/sell signals for stock are now generated using the previous condition for long and short averages along with **RSI** over the last 14 days
-   - **Buy** a stock only if **short EMA > long EMA** and **RSI > 30** (RSI < 30 indicates that the stock is overbought)
-   - **Sell** a stock only if **short EMA < long EMA** and **RSI < 70** (RSI > 70 indicates that the stock is oversold)
-3. Now we define `RISK_PER_TRADE` as **0.5%**, which is the maximum value of the portfolio that we can invest per trade.
-4. To calculate the position size of a trade, we use **ATR** (Average True Range) calculated over the last 14 days. This is to limit trading in a stock that is highly volatile.
-5. The position size for a stock is calculated as `RISK_PER_TRADE * portfolioValue / StopLossDistance`. Stop loss distance is the maximum loss per share that we can bear. It is defined to be thrice the ATR. 
-6. Short selling of stocks can take place since the position size is now controlled.
+   - **Buy** a stock only if **short EMA > long EMA** and **RSI < 70**  (RSI > 70 indicates that the stock is overbought)
+   - **Sell** a stock only if **short EMA < long EMA** and **RSI > 30**  (RSI < 30 indicates that the stock is oversold)
+4. Now we define `RISK_PER_TRADE` as **0.5%**, which is the maximum value of the portfolio that we can invest per trade.
+5. To calculate the position size of a trade, we use **ATR** (Average True Range) calculated over the last 14 days. This is to limit trading in a stock that is highly volatile.
+6. The position size for a stock is calculated as `RISK_PER_TRADE * portfolioValue / StopLossDistance`. Stop loss distance is the maximum loss per share that we can bear. It is defined to be thrice the ATR. 
+7. Short selling of stocks can take place since the position size is now controlled.
 
 We observe that the Sharpe Ratio improves from the first strategy to the second strategy.
